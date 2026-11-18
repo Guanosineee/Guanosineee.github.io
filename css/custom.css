@@ -173,9 +173,21 @@ body:has(#timeline-layout) #aside-content {
 
 .timeline-heading {
   margin: 0 0 18px;
+}
+
+.timeline-heading-title {
+  margin: 0;
   color: var(--font-color);
   font-size: 1.5em;
   font-weight: 600;
+  line-height: 1.4;
+}
+
+.timeline-heading-desc {
+  margin: 8px 0 0;
+  color: var(--card-meta);
+  font-size: .9em;
+  line-height: 1.7;
 }
 
 .timeline {
