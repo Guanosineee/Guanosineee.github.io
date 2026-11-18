@@ -1,0 +1,376 @@
+/* ===== Guanosine's Blog · 自定义样式 ===== */
+
+/* 霞鹜文楷的字形偏扁，正文行距松一点更好读 */
+#article-container p,
+#article-container li {
+  line-height: 1.85;
+}
+
+/* 文章 / 归档 / 标签 / 分类页的顶部：深海蓝渐变
+   首页是 .not-top-img（无 banner），不会被这条影响 */
+#page-header:not(.not-top-img) {
+  background-color: #24425f;
+  background-image: linear-gradient(135deg, #17313f 0%, #24506e 55%, #2f6f95 100%);
+}
+
+/* 页脚整条 banner 不要 */
+#footer {
+  display: none;
+}
+
+/* ===== 全站骨架：左侧标签路由 + 右侧内容 ===== */
+
+#content-inner.layout > #timeline-layout {
+  flex: 1 1 auto;
+  width: auto;
+}
+
+#timeline-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+body:has(#timeline-layout) #aside-content {
+  display: none;
+}
+
+/* ===== 左侧标签路由 ===== */
+
+#tag-router {
+  position: sticky;
+  top: 80px;
+  flex: 0 0 200px;
+  width: 200px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding: 18px 14px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+}
+
+.tag-router-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(128, 128, 128, .16);
+  text-align: center;
+}
+
+.tag-router-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.tag-router-author {
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.tag-router-desc {
+  margin-top: 4px;
+  color: var(--card-meta);
+  font-size: .78em;
+  line-height: 1.6;
+}
+
+.tag-router-github {
+  margin-top: 10px;
+  color: var(--card-meta);
+  font-size: .82em;
+}
+
+.tag-router-github:hover {
+  color: #2E6B8F;
+}
+
+.tag-router-title {
+  margin: 16px 8px 8px;
+  color: var(--card-meta);
+  font-size: .78em;
+  letter-spacing: .12em;
+}
+
+.tag-router-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tag-router-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--font-color);
+  font-size: .92em;
+  line-height: 1.4;
+  transition: background .2s, color .2s;
+}
+
+.tag-router-item:hover {
+  background: rgba(46, 107, 143, .08);
+  color: #2E6B8F;
+}
+
+.tag-router-item.active {
+  background: #2E6B8F;
+  color: #fff;
+}
+
+.tag-router-item.active .tag-router-count {
+  color: rgba(255, 255, 255, .75);
+}
+
+.tag-router-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tag-router-count {
+  flex: none;
+  color: var(--card-meta);
+  font-size: .8em;
+}
+
+/* 文章页左栏的目录 */
+.tag-router-toc .toc {
+  margin: 0;
+  padding-left: 14px;
+  list-style: none;
+  font-size: .84em;
+  line-height: 1.75;
+}
+
+.tag-router-toc .toc .toc {
+  padding-left: 12px;
+}
+
+.tag-router-toc .toc-link {
+  color: var(--card-meta);
+  transition: color .2s;
+}
+
+.tag-router-toc .toc-link:hover,
+.tag-router-toc .toc-link.is-active-link {
+  color: #2E6B8F;
+}
+
+/* ===== 首页 / 标签 / 分类：文章卡片流 ===== */
+
+#timeline-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-heading {
+  margin: 0 0 18px;
+  color: var(--font-color);
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-year {
+  margin: 24px 0 12px;
+  color: var(--card-meta);
+  font-size: .95em;
+  font-weight: 600;
+  letter-spacing: .1em;
+}
+
+.timeline-year:first-child {
+  margin-top: 0;
+}
+
+.timeline-item {
+  display: block;
+  margin-bottom: 14px;
+  padding: 18px 20px;
+  border: 1px solid rgba(128, 128, 128, .14);
+  border-left: 3px solid #3B82C4;
+  border-radius: 10px;
+  background: var(--card-bg);
+  color: var(--font-color);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+
+.timeline-item:hover {
+  border-color: rgba(46, 107, 143, .3);
+  border-left-color: #2E6B8F;
+  box-shadow: 0 10px 24px rgba(46, 107, 143, .12);
+  transform: translateY(-2px);
+}
+
+.timeline-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  color: var(--card-meta);
+  font-size: .82em;
+}
+
+.timeline-cat {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgba(46, 107, 143, .08);
+  color: #2E6B8F;
+}
+
+.timeline-title {
+  margin: 9px 0 6px;
+  color: var(--font-color);
+  font-size: 1.18em;
+  font-weight: 600;
+  line-height: 1.5;
+  transition: color .2s;
+}
+
+.timeline-item:hover .timeline-title {
+  color: #2E6B8F;
+}
+
+.timeline-excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: var(--card-meta);
+  font-size: .9em;
+  line-height: 1.75;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.timeline-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  color: #3B82C4;
+  font-size: .85em;
+  font-weight: 500;
+}
+
+.timeline-more i {
+  transition: transform .2s;
+}
+
+.timeline-item:hover .timeline-more i {
+  transform: translateX(4px);
+}
+
+/* ===== 文章页：同款左路由 + 文章卡片 ===== */
+
+#post-main {
+  flex: 1;
+  min-width: 0;
+  padding: 28px 32px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+}
+
+[data-theme="dark"] #tag-router,
+[data-theme="dark"] #post-main,
+[data-theme="dark"] .timeline-item {
+  box-shadow: none;
+}
+
+/* 阅读模式：收起左路由，文章铺开 */
+.read-mode #tag-router {
+  display: none !important;
+}
+
+.read-mode #timeline-layout {
+  display: block;
+}
+
+.read-mode #post-main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.read-mode .timeline-item {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+/* ===== 响应式 ===== */
+
+@media (max-width: 900px) {
+  #timeline-layout {
+    flex-direction: column;
+  }
+
+  #tag-router {
+    position: static;
+    flex: none;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .tag-router-profile {
+    flex-direction: row;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .tag-router-avatar {
+    width: 46px;
+    height: 46px;
+  }
+
+  .tag-router-desc {
+    display: none;
+  }
+
+  .tag-router-items {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+
+  .tag-router-item {
+    flex: none;
+  }
+
+  .tag-router-toc {
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #post-main {
+    padding: 20px 14px;
+  }
+
+  .timeline-item {
+    padding: 16px;
+  }
+}
+
+/* 标签云 hover 用主题色 */
+.tag-cloud-list a:hover,
+.card-tag-cloud a:hover {
+  color: #2E6B8F;
+}
